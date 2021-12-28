@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server src --verbose"
+    "start": "webpack-dev-server --watch-content-base --open",
+    "build": "webpack --mode=production --output ./main.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "live-server": "^1.2.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.1"
   }
 }
