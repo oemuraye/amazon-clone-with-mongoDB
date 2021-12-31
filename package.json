@@ -56,11 +56,17 @@
     "vary": "^1.1.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.7",
+    "@babel/core": "^7.16.7",
+    "@babel/node": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "eslint": "^8.5.0",
+    "eslint-plugin-import": "^2.25.3",
     "nodemon": "^2.0.15"
   },
   "scripts": {
     "start": "node backend/server.js",
-    "dev": "nodemon backend/server.js",
+    "dev": "nodemon --watch backend --exec babel-node backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

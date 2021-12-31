@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --watch-content-base --open",
+    "start": "webpack-dev-server --open --mode=production",
     "build": "webpack --mode=production --output ./main.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.7.1"
+    "webpack-dev-server": "^4.7.2"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
   }
 }

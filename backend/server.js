@@ -1,8 +1,8 @@
-const express = require('express')
-const cors = require('cors')
-const data = require('./data.js')
+import express from 'express'
+import cors from 'cors'
+import data from './data.js'
 
-const app = express()
+const app1 = express()
 
 app.use(cors())
 

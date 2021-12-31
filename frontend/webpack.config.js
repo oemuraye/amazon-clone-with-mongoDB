@@ -1,15 +1,12 @@
 const path = require("path");
 
 module.exports = {
-  entry: " path of index.js",
-  output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
-  },
+  
   devServer: {
-    static: path.resolve(__dirname, "dist"),
+    static: {
+      directory: path.join(__dirname, ""),
+    },
     compress: true,
-    port: 8080,
+    port: 9000,
   },
-  mode: "development",
 };
