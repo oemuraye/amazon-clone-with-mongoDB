@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import data from './data.js'
 
-const app1 = express()
+const app = express()
 
 app.use(cors())
 
