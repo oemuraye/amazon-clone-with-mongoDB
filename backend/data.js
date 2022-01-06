@@ -29,7 +29,7 @@ export default {
             image: 'images/product-3.jpg',
             price: 59,
             brand: 'Adidas',
-            rating: 4,
+            rating: 1.5,
             numReviews: 45,
             countInStock: 6
         },
@@ -38,10 +38,10 @@ export default {
             name: 'Under Armour Mens Sportstyle Tricot Joggers',
             category: 'Pants',
             image: 'images/product-4.jpg',
-            price: 90,
+            price: 400,
             brand: 'Under Armour',
-            rating: 2.5,
-            numReviews: 198,
+            rating: 4,
+            numReviews: 50,
             countInStock: 6
         },
         {
@@ -49,9 +49,9 @@ export default {
             name: 'Champion Mens Graphic Powerblend Fleece Jogger',
             category: 'Pants',
             image: 'images/product-5.jpg',
-            price: 119,
+            price: 129,
             brand: 'Champion',
-            rating: 3.5,
+            rating: 2.5,
             numReviews: 89,
             countInStock: 6
         },
@@ -62,7 +62,7 @@ export default {
             image: 'images/product-6.jpg',
             price: 85,
             brand: 'Aelfric Eden',
-            rating: 4.5,
+            rating: 1,
             numReviews: 45,
             countInStock: 6
         },

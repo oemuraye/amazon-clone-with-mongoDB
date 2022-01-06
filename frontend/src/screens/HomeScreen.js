@@ -1,21 +1,24 @@
-import axios from 'axios'
+import axios from "axios";
+import Rating from "../components/Rating";
 
 const HomeScreen = {
-    render: async () => {
-        const response = await axios({
-            url: "http://localhost:5000/api/products",
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-        if (!response || response.statusText !== 'OK') {
-            return `<div>Error in getting data</div>`
-        }
+  render: async () => {
+    const response = await axios({
+      url: "http://localhost:5000/api/products",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response || response.statusText !== "OK") {
+      return `<div>Error in getting data</div>`;
+    }
 
-        const products = response.data
-        return `
+    const products = response.data;
+    return `
         <ul class="products">
-          ${products.map(product => `
+          ${products
+            .map(
+              (product) => `
           <li>
             <div class="product">
                 <a href="/#/product/${product._id}">
@@ -26,6 +29,12 @@ const HomeScreen = {
                         ${product.name}
                     </a>
                 </div>
+                <div class="product-rating">
+                    ${Rating.render({
+                      value: product.rating,
+                      text: `${product.numReviews} reviews`,
+                    })}
+                </div>
                 <div class="product-brand">
                     ${product.brand}
                 </div>
@@ -35,9 +44,10 @@ const HomeScreen = {
             </div>
           </li>
           `
-          ).join('\n')}
+            )
+            .join("\n")}
         `;
-    }
-}
+  },
+};
 
-export default HomeScreen
+export default HomeScreen;
