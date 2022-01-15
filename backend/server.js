@@ -1,6 +1,21 @@
 import express from 'express'
 import cors from 'cors'
-import data from './data.js'
+import data from './data'
+import mongoose from 'mongoose'
+import config from './config'
+
+
+mongoose.connect(config.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // useCreateIndex: true
+})
+.then(() => {
+    console.log('Connected to mongodb');
+})
+.catch((error) => {
+    console.log(error.message)
+})
 
 const app = express()
 
