@@ -1,10 +1,11 @@
 import express from 'express'
 import cors from 'cors'
 import data from './data'
-import mongoose from 'mongoose'
-import config from './config'
-import mongodb from 'mongodb'
+// import mongoose from 'mongoose'
+// import config from './config'
+
 import userRouter from './routers/userRouter'
+const mongodb = require('mongodb')
 
 const MongoClient = mongodb.MongoClient;
 
@@ -21,15 +22,14 @@ const MongoClient = mongodb.MongoClient;
 // })
 
 
-const connectionURL = "mongodb://localhost:127017";
+const connectionURL = "mongodb://127.0.0.1:27017";
 const databaseName = "rutech-shopping";
 
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
     if (error) {
         return console.log('Unable to connect to database!')
     }
-    const db = client.db(databaseName);
-     db.collection("users");
+    console.log('connection successful')
 })
 
 

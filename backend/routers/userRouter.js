@@ -6,15 +6,15 @@ const userRouter = express.Router()
 userRouter.get('/createadmin', async (res, req) => {
     try {
         const user = new User({
-          name: "admin",
-          email: "admin@example.com",
-          password: "12/12/12",
-          isAdmin: true,
-        });
-        const createdUser = await user.save();
-        res.send(createdUser);
+            name: 'admin',
+            email: 'admin@example.com',
+            password: '12/12/12',
+            isAdmin: true
+        })
+        const createUser = await user.save()
+        res.send(createUser)
     } catch (err) {
-        res.status(500).send({ message: err.message })
+        res.statusCode(500).send(err.message)
     }
 })
 
