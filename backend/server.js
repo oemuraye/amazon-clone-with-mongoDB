@@ -2,14 +2,11 @@ import express from 'express'
 import cors from 'cors'
 import data from './data'
 
-// import mongoose from 'mongoose'
+import mongoose from 'mongoose'
 // import config from './config'
 
 import userRouter from './routers/userRouter'
 import bodyParser from 'body-parser'
-const mongodb = require('mongodb')
-
-const MongoClient = mongodb.MongoClient
 
 // mongoose.connect(config.MONGODB_URL, {
 //     useNewUrlParser: true,
@@ -27,13 +24,14 @@ const MongoClient = mongodb.MongoClient
 const connectionURL = "mongodb://127.0.0.1:27017";
 const databaseName = "rutech-shopping";
 
-MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
-    if (error) {
-        return console.log('Unable to connect to database!')
-    }
-    console.log('connection successful')
-})
+const main = async () => {
+  await mongoose.connect(connectionURL, {
+    useNewUrlParser: true,
+  });
+  console.log('connection successful')
+}
 
+main().catch((err) => console.log(err.message))
 
 const app = express()
 

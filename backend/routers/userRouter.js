@@ -1,4 +1,6 @@
 import express from 'express'
+import expressAsyncHandler from 'express-async-handler';
+
 import User from '../models/userModel';
 
 const userRouter = express.Router()
@@ -6,8 +8,8 @@ const userRouter = express.Router()
 userRouter.get('/createadmin', async (req, res) => {
     try {
         const user = new User({
-            name: 'admin',
-            email: 'admin@example.com',
+            name: 'administration',
+            email: 'admina@example.com',
             password: '12/12/12',
             isAdmin: true
         })
