@@ -53,7 +53,11 @@ app.get('/api/products/:id', (req, res) => {
     }
 })
 
+app.use((err, req, res, next) => {
+  const status = err.name && err.name === 'ValidationError' ? 400 : 500;
+  res.status(status).send({message: err.message})
+})
 
 app.listen(5000, () => {
-    console.log("Serving at 5000");
+    console.log("Serving at 5000")
 })
