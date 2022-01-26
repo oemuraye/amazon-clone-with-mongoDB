@@ -7,6 +7,7 @@ import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 import Header from './components/Header';
 import RegisterScreen from "./screens/RegisterScreen.js";
 import ProfileScreen from "./screens/ProfileScreen.js";
+import ShippingScreen from "./screens/ShippingScreen.js";
 ;
 
 
@@ -18,6 +19,7 @@ const routes = {
   '/signin': SigninScreen,
   '/register': RegisterScreen,
   '/profile': ProfileScreen,
+  '/shipping': ShippingScreen,
 };
 
 

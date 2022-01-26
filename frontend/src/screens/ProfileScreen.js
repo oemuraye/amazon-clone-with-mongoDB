@@ -1,9 +1,15 @@
 import { update } from "../api";
-import { getUserInfo, setUserInfo } from "../localStorage";
+import { clearUser, getUserInfo, setUserInfo } from "../localStorage";
 import { hideLoading, showLoading, showMessage } from "../utils";
 
 const ProfileScreen = {
     after_render: () => {
+        document
+          .getElementById("signout-button")
+          .addEventListener("click", () => {
+            clearUser();
+            document.location.hash = "/";
+          });
         document.getElementById('profile-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             showLoading()
@@ -48,6 +54,11 @@ const ProfileScreen = {
                         <li>
                             <button type="submit" class="primary">
                             Update
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" id="signout-button" >
+                            Sign Out
                             </button>
                         </li>
                     </ul>
