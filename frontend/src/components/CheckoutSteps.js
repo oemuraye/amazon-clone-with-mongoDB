@@ -9,5 +9,5 @@ const CheckoutSteps = {
     </div>
     `;
   },
-};
-export default CheckoutSteps;
+}
+export default CheckoutSteps

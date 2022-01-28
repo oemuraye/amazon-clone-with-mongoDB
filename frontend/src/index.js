@@ -8,7 +8,8 @@ import Header from './components/Header';
 import RegisterScreen from "./screens/RegisterScreen.js";
 import ProfileScreen from "./screens/ProfileScreen.js";
 import ShippingScreen from "./screens/ShippingScreen.js";
-;
+import PaymentScreen from "./screens/PaymentScreen.js";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen.js";
 
 
 const routes = {
@@ -20,6 +21,8 @@ const routes = {
   '/register': RegisterScreen,
   '/profile': ProfileScreen,
   '/shipping': ShippingScreen,
+  '/payment': PaymentScreen,
+  '/placeorder': PlaceOrderScreen,
 };
 
 
@@ -30,13 +33,17 @@ const router = async () => {
       (request.resource ? `/${request.resource}` : '/') +
       (request.id ? "/:id" : '') +
       (request.verb ? `/${request.verb}` : '');
+
     const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen
+
     const header = document.getElementById('header-container')
     header.innerHTML = await Header.render();
     await Header.after_render();
+
     const main = document.getElementById("main-container")
     main.innerHTML = await screen.render()
     if(screen.after_render) await screen.after_render()
+
     hideLoading()
 }
 

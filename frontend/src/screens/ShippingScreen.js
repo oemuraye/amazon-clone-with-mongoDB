@@ -3,14 +3,15 @@ import CheckoutSteps from "../components/CheckoutSteps";
 
 const ShippingScreen = {
     after_render: () => {
-        document.getElementById('shopping-form').addEventListener('submit', async (e) => {
+        document.getElementById('shipping-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             setShipping({
-              address: document.getElementById("address").value,
-              city: document.getElementById("city").value,
-              postalCode: document.getElementById("postalCode").value,
-              country: document.getElementById("country").value,
+              address: document.getElementById('address').value,
+              city: document.getElementById('city').value,
+              postalCode: document.getElementById('postalCode').value,
+              country: document.getElementById('country').value,
             });
+            // console.log(address)
             document.location.hash = "/payment";
         })
     },

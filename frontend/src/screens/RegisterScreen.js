@@ -17,13 +17,13 @@ const RegisterScreen = {
                showMessage(data.error)
             } else {
                 setUserInfo(data)
-                document.location.hash = "/";
+                document.location.hash = "/"
             }
         })
     },
     render: () => {
         if (getUserInfo().name) {
-            redirectUser()
+            document.location.hash = '/'
         }
         return `
             <div class="form-container">
