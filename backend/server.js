@@ -7,6 +7,7 @@ import mongoose from 'mongoose'
 
 import userRouter from './routers/userRouter'
 import bodyParser from 'body-parser'
+import orderRouter from './routers/orderRouter'
 
 // mongoose.connect(config.MONGODB_URL, {
 //     useNewUrlParser: true,
@@ -39,6 +40,8 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/api/users', userRouter)
+
+app.use('/api/orders', orderRouter)
 
 app.get("/api/products", (req, res) => {
     res.send(data.products)
