@@ -8,6 +8,7 @@ import mongoose from 'mongoose'
 import userRouter from './routers/userRouter'
 import bodyParser from 'body-parser'
 import orderRouter from './routers/orderRouter'
+import config from './config'
 
 // mongoose.connect(config.MONGODB_URL, {
 //     useNewUrlParser: true,
@@ -42,6 +43,10 @@ app.use(bodyParser.json())
 app.use('/api/users', userRouter)
 
 app.use('/api/orders', orderRouter)
+
+app.get('/api/paypal/clientId', (req, res) => {
+  res.send({ clientId: config.PAYPAL_CLIENT_ID })
+})
 
 app.get("/api/products", (req, res) => {
     res.send(data.products)

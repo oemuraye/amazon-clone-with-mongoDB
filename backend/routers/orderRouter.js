@@ -30,4 +30,8 @@ orderRouter.post('/', isAuth, expressAsyncHandler( async (req, res) => {
           .send({ message: "New Order Created", order: createdOrder });
 }))
 
+orderRouter.put('/:id/pay', isAuth, expressAsyncHandler( async (req, res) => {
+  implementi
+}))
+
 export default orderRouter
