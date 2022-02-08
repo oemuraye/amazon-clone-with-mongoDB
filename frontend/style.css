@@ -361,3 +361,9 @@ footer {
   font-weight: bold;
   color: #c04000;
 }
+
+#pay-button {
+  border-radius: 50px;
+  font-weight: bold;
+  color: #102968;
+}

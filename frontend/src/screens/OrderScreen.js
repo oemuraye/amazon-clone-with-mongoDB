@@ -5,7 +5,7 @@ import {
   parseRequestUrl,
   rerender,
 } from "../utils";
-import { getOrders, getPaypalClientId, payaorder, payOrder } from "../api";
+import { getOrders, getPaypalClientId, payOrder } from "../api";
 
 const addPaypalSdk = async (totalPrice) => {
   const clientId = await getPaypalClientId();
@@ -71,7 +71,9 @@ const handlePayment = (clientId, totalPrice) => {
 };
 
 const OrderScreen = {
-  after_render: async () => {},
+  after_render: async () => {
+    
+  },
   render: async () => {
     const request = parseRequestUrl();
     const {
@@ -168,6 +170,11 @@ const OrderScreen = {
                                 </li> 
                                 <li id="paypal-button" class="fw">
                                     <div></div>
+                                </li>
+                                <li>
+                                    <button id="pay-button" class="primary fw">
+                                        Pay With PayStack
+                                    </button>
                                 </li> 
                             </ul>
                     </div>

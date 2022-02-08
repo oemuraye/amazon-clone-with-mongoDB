@@ -154,6 +154,7 @@ export const payOrder = async (orderId, paymentResult) => {
     const { token } = getUserInfo();
     const response = await axios({
       url: `${apiUrl}/api/orders/${orderId}/pay`,
+      method: 'PUT',
       headers: {
         "content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -168,3 +169,17 @@ export const payOrder = async (orderId, paymentResult) => {
     return { error: err.response ? err.response.data.message : err.message }
   }
 }
+
+export const getPayStackID = async () => {
+  const response = await axios({
+    url: `${apiUrl}/api/paystack/paystackID`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.statusText !== "OK") {
+    throw new Error(response.data.message);
+  }
+  return response.data.payStackID;
+}
+
