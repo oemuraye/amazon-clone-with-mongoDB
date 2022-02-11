@@ -47,10 +47,6 @@ app.get("/api/paypal/clientId", (req, res) => {
   res.send({ clientId: config.PAYPAL_CLIENT_ID });
 });
 
-app.get("/api/paystack/paystackID", (req, res) => {
-  res.send({ paystackID: config.PAYSTACK_SECRET });
-});
-
 app.get("/api/products", (req, res) => {
   res.send(data.products);
 });
@@ -69,6 +65,6 @@ app.use((err, req, res, next) => {
   res.status(status).send({ message: err.message });
 });
 
-app.listen(config.PORT, () => {
-  console.log(`Serving at ${config.PORT}`);
+app.listen(5000, () => {
+  console.log("Serving at 5000");
 });

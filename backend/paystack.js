@@ -39,4 +39,4 @@ export const paystack = (request) => {
     request(option, callback);
   };
   return { initializePayment, verifyPayment };
-}
+};

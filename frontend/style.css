@@ -366,4 +366,9 @@ footer {
   border-radius: 50px;
   font-weight: bold;
   color: #102968;
+  border: none;
+  /* display: none; */
+}
+isPaid {
+  display: none;
 }

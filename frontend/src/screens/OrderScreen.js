@@ -8,7 +8,7 @@ import {
 import { getOrders, getPaypalClientId, payOrder } from "../api";
 
 const addPaypalSdk = async (totalPrice) => {
-  const clientId = await getPaypalClientId();
+  const clientId = await getPaypalClientId()
   showLoading();
   if (!window.paypal) {
     const script = document.createElement("script");
@@ -23,57 +23,56 @@ const addPaypalSdk = async (totalPrice) => {
 };
 
 const handlePayment = (clientId, totalPrice) => {
-  window.paypal.Button.render({
-    env: "sandbox",
-    client: {
-      sandbox: clientId,
-      production: "",
-    },
-    locale: "en_US",
-    style: {
-      size: "responsive",
-      color: "gold",
-      shape: "pill",
-    },
+  window.paypal.Button.render(
+    {
+      env: "sandbox",
+      client: {
+        sandbox: clientId,
+        production: "",
+      },
+      locale: "en_US",
+      style: {
+        size: "responsive",
+        color: "gold",
+        shape: "pill",
+      },
 
-    commit: true,
-    payment(data, actions) {
-      return actions.payment.create({
-        transactions: [
-          {
-            amount: {
-              total: totalPrice,
-              currency: "USD",
+      commit: true,
+      payment(data, actions) {
+        return actions.payment.create({
+          transactions: [
+            {
+              amount: {
+                total: totalPrice,
+                currency: "USD",
+              },
             },
-          },
-        ],
-      });
-    },
-    onAuthorize(data, actions) {
-      return actions.payment.execute().then(async () => {
-        showLoading();
-        await payOrder(parseRequestUrl().id, {
+          ],
+        });
+      },
+      onAuthorize(data, actions) {
+        return actions.payment.execute().then(async () => {
+          showLoading();
+          await payOrder(parseRequestUrl().id, {
             orderID: data.orderID,
             payerID: data.payerID,
             paymentID: paymentID,
-        })
-        hideLoading();
-        showMessage("Payment was successfull.", () => {
-          rerender(OrderScreen);
+          });
+          hideLoading();
+          showMessage("Payment was successfull.", () => {
+            rerender(OrderScreen);
+          });
         });
-      });
+      },
     },
-  },
-  '#paypal-button'
+    "#paypal-button"
   ).then(() => {
-      hideLoading();
-  })
+    hideLoading();
+  });
 };
 
 const OrderScreen = {
-  after_render: async () => {
-    
-  },
+  after_render: async () => {},
   render: async () => {
     const request = parseRequestUrl();
     const {
@@ -91,7 +90,7 @@ const OrderScreen = {
       paidAt,
     } = await getOrders(request.id);
     if (!isPaid) {
-        addPaypalSdk(totalPrice)
+      addPaypalSdk(totalPrice);
     }
     return `
             <div>
