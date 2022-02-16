@@ -1,3 +1,8 @@
+import { getOrder, getPayStackID, payOrder } from "./api"
+import { getUserInfo } from "./localStorage"
+import OrderScreen from "./screens/OrderScreen"
+// import PaystackPop from '@paystack/inline-js'
+
 export const parseRequestUrl = () => {
     const url = document.location.hash.toLowerCase()
     const request = url.split("/")
@@ -44,3 +49,38 @@ export const redirectUser = () => {
   }
 };
 
+  export const payWithPaystack = async () => {
+    const request  = parseRequestUrl()
+    const payStackID = await getPayStackID()
+    const { _id, totalPrice } = await getOrder(request.id);
+    const {email, name} = await getUserInfo(request.id)
+    const paystack =  new PaystackPop()
+    paystack.newTransaction({
+      key: payStackID,
+      email: email,
+      amount: totalPrice * 100,
+      // ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+        custom_fields: [
+          {
+            display_name: name,
+            orderID: _id,
+          },
+        ],
+      },
+      onSuccess: async (transaction) => {
+        showLoading();
+        await payOrder(parseRequestUrl().id, {
+          orderID: transaction.orderID,
+          payerID: transaction.payerID,
+          paymentID: transaction.paymentID,
+        });
+        hideLoading();
+        rerender(OrderScreen);
+      },
+      onCancel: () => {
+        showMessage("Transaction Unsuccessful");
+        rerender(OrderScreen);
+      },
+    });
+  }

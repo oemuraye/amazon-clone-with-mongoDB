@@ -3,7 +3,6 @@ import cors from "cors";
 import data from "./data";
 
 import mongoose from "mongoose";
-// import config from './config'
 
 import userRouter from "./routers/userRouter";
 import bodyParser from "body-parser";
@@ -44,19 +43,23 @@ app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
 
 app.get("/api/paypal/clientId", (req, res) => {
-  res.send({ clientId: config.PAYPAL_CLIENT_ID });
+  res.send({ clientId: config.PAYPAL_CLIENT_ID })
 });
 
+app.get("/api/paystack/clientId", (req, res) => {
+  res.send({ clientId: config.PAYSTACK_SECRET})
+})
+
 app.get("/api/products", (req, res) => {
-  res.send(data.products);
+  res.send(data.products)
 });
 
 app.get("/api/products/:id", (req, res) => {
   const product = data.products.find((x) => x._id === req.params.id);
   if (product) {
-    res.send(product);
+    res.send(product)
   } else {
-    res.status(404).send({ message: "product Not Found!" });
+    res.status(404).send({ message: "product Not Found!" })
   }
 });
 
@@ -66,5 +69,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(5000, () => {
-  console.log("Serving at 5000");
+  console.log("Serving at 5000")
 });

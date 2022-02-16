@@ -62,7 +62,7 @@ export const setShipping = ({
 export const getPayment = () => {
   const payment = localStorage.getItem("payment")
     ? JSON.parse(localStorage.getItem("payment"))
-    : { paymentMethod: 'paypal' }
+    : { paymentMethod: 'Paystack' }
     return payment
 }
 

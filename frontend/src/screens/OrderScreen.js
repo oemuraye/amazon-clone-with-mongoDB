@@ -4,75 +4,28 @@ import {
   showMessage,
   parseRequestUrl,
   rerender,
+  payWithPaystack,
 } from "../utils";
-import { getOrders, getPaypalClientId, payOrder } from "../api";
+import { getOrder, getPaypalClientId, getPayStackID, payOrder } from "../api";
 
-const addPaypalSdk = async (totalPrice) => {
-  const clientId = await getPaypalClientId()
+
+const paymentPortal = () => {
   showLoading();
-  if (!window.paypal) {
-    const script = document.createElement("script");
+    const script = document.createElement("script")
     script.type = "text/javascript";
-    script.src = "https://www.paypalobjects.com/api/checkout.js";
+    script.src = "https://js.paystack.co/v2/inline.js";
     script.async = true;
-    script.onload = () => handlePayment(clientId, totalPrice);
-    document.body.appendChild(script);
-  } else {
-    handlePayment(clientId, totalPrice);
-  }
+    document.body.appendChild(script)
+  hideLoading()
 };
 
-const handlePayment = (clientId, totalPrice) => {
-  window.paypal.Button.render(
-    {
-      env: "sandbox",
-      client: {
-        sandbox: clientId,
-        production: "",
-      },
-      locale: "en_US",
-      style: {
-        size: "responsive",
-        color: "gold",
-        shape: "pill",
-      },
-
-      commit: true,
-      payment(data, actions) {
-        return actions.payment.create({
-          transactions: [
-            {
-              amount: {
-                total: totalPrice,
-                currency: "USD",
-              },
-            },
-          ],
-        });
-      },
-      onAuthorize(data, actions) {
-        return actions.payment.execute().then(async () => {
-          showLoading();
-          await payOrder(parseRequestUrl().id, {
-            orderID: data.orderID,
-            payerID: data.payerID,
-            paymentID: paymentID,
-          });
-          hideLoading();
-          showMessage("Payment was successfull.", () => {
-            rerender(OrderScreen);
-          });
-        });
-      },
-    },
-    "#paypal-button"
-  ).then(() => {
-    hideLoading();
-  });
-};
 
 const OrderScreen = {
-  after_render: async () => {},
+  after_render: async () => {
+    document.getElementById('pay-button').addEventListener('click', async () => {
+      payWithPaystack()
+    })
+  },
   render: async () => {
     const request = parseRequestUrl();
     const {
@@ -88,9 +41,9 @@ const OrderScreen = {
       deliveredAt,
       isPaid,
       paidAt,
-    } = await getOrders(request.id);
+    } = await getOrder(request.id)
     if (!isPaid) {
-      addPaypalSdk(totalPrice);
+      paymentPortal()
     }
     return `
             <div>
@@ -171,9 +124,11 @@ const OrderScreen = {
                                     <div></div>
                                 </li>
                                 <li>
-                                    <button id="pay-button" class="primary fw">
-                                        Pay With PayStack
-                                    </button>
+                                    ${
+                                      isPaid
+                                        ? `<div class="success"> </div>`
+                                        : `<button class="primary fw" id="pay-button">Pay With Paystack</button>`
+                                    }
                                 </li> 
                             </ul>
                     </div>

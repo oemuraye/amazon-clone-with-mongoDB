@@ -117,7 +117,7 @@ export const createOrder = async (order) => {
   }
 };
 
-export const getOrders = async (id) => {
+export const getOrder = async (id) => {
   try {
     const { token } = getUserInfo();
     const response = await axios({
@@ -149,6 +149,20 @@ export const getPaypalClientId = async () => {
   return response.data.clientId;
 };
 
+
+export const getPayStackID = async () => {
+  const response = await axios({
+    url: `${apiUrl}/api/paystack/clientId`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.statusText !== "OK") {
+    throw new Error(response.data.message)
+  }
+  return response.data.clientId
+};
+
 export const payOrder = async (orderId, paymentResult) => {
   try {
     const { token } = getUserInfo();
@@ -169,16 +183,3 @@ export const payOrder = async (orderId, paymentResult) => {
     return { error: err.response ? err.response.data.message : err.message };
   }
 }
-
-export const getPayStackID = async () => {
-  const response = await axios({
-    url: `${apiUrl}/api/paystack/paystackID`,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (response.statusText !== "OK") {
-    throw new Error(response.data.message)
-  }
-  return response.data.payStackID
-};

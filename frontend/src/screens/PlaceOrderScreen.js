@@ -5,7 +5,7 @@ import { createOrder } from "../api";
 ;
 
 
-const convertCartToOreder = () => {
+const convertCartToOrder = () => {
   const orderItems = getCartItems();
   if (orderItems.lenght === 0) {
     document.location.hash = "/cart";
@@ -35,7 +35,7 @@ const convertCartToOreder = () => {
 const PlaceOrderScreen = {
   after_render: async () => {
       document.getElementById('placeorder-button').addEventListener('click', async () => {
-          const order = convertCartToOreder();
+          const order = convertCartToOrder();
           showLoading()
           const data = await createOrder(order)
           hideLoading()
@@ -56,7 +56,7 @@ const PlaceOrderScreen = {
       shippingPrice,
       taxPrice,
       totalPrice,
-    } = convertCartToOreder();
+    } = convertCartToOrder();
     return `
             <div>
                 ${CheckoutSteps.render({
