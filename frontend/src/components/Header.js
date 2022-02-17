@@ -1,8 +1,11 @@
-import { getUserInfo } from "../localStorage";
+import { getCartItems, getUserInfo } from "../localStorage";
 
 const Header = {
   render: () => {
-    const { name } = getUserInfo();
+    const { name, isAdmin } = getUserInfo();
+    // const {cartItems} = getCartItems()
+    // let numOfItems = 0
+
     return `
             <div>
                 <a href="">Pius-King </a>
@@ -14,6 +17,7 @@ const Header = {
                     : `<a href="http:/#/signin">Sign-In</a>`
                 }
                 <a href="http:/#/cart">Cart</a>
+                ${isAdmin ? `<a href="/#/dashboard">Dashboard</a>` : ""}
             </div>
         `;
   },

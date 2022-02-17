@@ -19,12 +19,19 @@ const paymentPortal = () => {
   hideLoading()
 };
 
+const makePayment = () => {
+  document.getElementById("pay-button").addEventListener("click", async () => {
+    payWithPaystack();
+  });
+}
 
 const OrderScreen = {
   after_render: async () => {
-    document.getElementById('pay-button').addEventListener('click', async () => {
-      payWithPaystack()
-    })
+    const request = parseRequestUrl();
+    const {isPaid} = await getOrder(request.id);
+    if (!isPaid) {
+      makePayment()
+    }
   },
   render: async () => {
     const request = parseRequestUrl();
