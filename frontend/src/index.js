@@ -1,10 +1,10 @@
+import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
+import Header from './components/Header';
 import CartScreen from "./screens/CartScreen.js";
 import Error404Screen from "./screens/Error404Screen.js"
 import HomeScreen from "./screens/HomeScreen.js"
 import ProductScreen from "./screens/ProductScreen.js"
 import SigninScreen from "./screens/SigninScreen.js";
-import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
-import Header from './components/Header';
 import RegisterScreen from "./screens/RegisterScreen.js";
 import ProfileScreen from "./screens/ProfileScreen.js";
 import ShippingScreen from "./screens/ShippingScreen.js";
@@ -12,21 +12,27 @@ import PaymentScreen from "./screens/PaymentScreen.js";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen.js";
 import OrderScreen from "./screens/OrderScreen.js";
 import DashboardScreen from "./screens/DashboardScreen.js";
+import ProductListScreen from "./screens/ProductListScreen.js";
+import OrderListScreen from "./screens/OrderListScreen.js";
+import ProductEditScreen from "./screens/ProductEditScreen.js";
 
 
 const routes = {
   "/": HomeScreen,
-  "/product/:id": ProductScreen,
+  '/product/:id/edit': ProductEditScreen,
+  '/product/:id': ProductScreen,
   "/order/:id": OrderScreen,
   "/cart/:id": CartScreen,
   "/cart": CartScreen,
-  '/signin': SigninScreen,
-  '/register': RegisterScreen,
-  '/profile': ProfileScreen,
-  '/shipping': ShippingScreen,
-  '/payment': PaymentScreen,
-  '/placeorder': PlaceOrderScreen,
-  '/dashboard': DashboardScreen,
+  "/signin": SigninScreen,
+  "/register": RegisterScreen,
+  "/profile": ProfileScreen,
+  "/shipping": ShippingScreen,
+  "/payment": PaymentScreen,
+  "/placeorder": PlaceOrderScreen,
+  "/dashboard": DashboardScreen,
+  "/productlist": ProductListScreen,
+  "/orderlist": OrderListScreen,
 };
 
 

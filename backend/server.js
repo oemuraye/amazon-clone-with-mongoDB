@@ -4,8 +4,9 @@ import data from "./data";
 
 import mongoose from "mongoose";
 
-import userRouter from "./routers/userRouter";
 import bodyParser from "body-parser";
+import userRouter from "./routers/userRouter";
+import productRouter from "./routers/productRouter";
 import orderRouter from "./routers/orderRouter";
 import config from "./config";
 
@@ -40,6 +41,11 @@ app.use(bodyParser.json());
 
 app.use("/api/users", userRouter);
 
+// app.get("/api/products", (req, res) => {
+//   res.send(data.products)
+// });
+app.use("/api/products", productRouter);
+
 app.use("/api/orders", orderRouter);
 
 app.get("/api/paypal/clientId", (req, res) => {
@@ -50,9 +56,6 @@ app.get("/api/paystack/clientId", (req, res) => {
   res.send({ clientId: config.PAYSTACK_SECRET})
 })
 
-app.get("/api/products", (req, res) => {
-  res.send(data.products)
-});
 
 app.get("/api/products/:id", (req, res) => {
   const product = data.products.find((x) => x._id === req.params.id);
