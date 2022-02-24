@@ -3,11 +3,13 @@ import cors from "cors";
 import data from "./data";
 
 import mongoose from "mongoose";
-
 import bodyParser from "body-parser";
+import path from 'path'
+
 import userRouter from "./routers/userRouter";
 import productRouter from "./routers/productRouter";
 import orderRouter from "./routers/orderRouter";
+import uploadRouter from './routers/uploadRoute'
 import config from "./config";
 
 // mongoose.connect(config.MONGODB_URL, {
@@ -41,12 +43,11 @@ app.use(bodyParser.json());
 
 app.use("/api/users", userRouter);
 
-// app.get("/api/products", (req, res) => {
-//   res.send(data.products)
-// });
 app.use("/api/products", productRouter);
 
 app.use("/api/orders", orderRouter);
+
+app.use("/api/uploads", uploadRouter);
 
 app.get("/api/paypal/clientId", (req, res) => {
   res.send({ clientId: config.PAYPAL_CLIENT_ID })
@@ -56,14 +57,10 @@ app.get("/api/paystack/clientId", (req, res) => {
   res.send({ clientId: config.PAYSTACK_SECRET})
 })
 
-
-app.get("/api/products/:id", (req, res) => {
-  const product = data.products.find((x) => x._id === req.params.id);
-  if (product) {
-    res.send(product)
-  } else {
-    res.status(404).send({ message: "product Not Found!" })
-  }
+app.use("/uploads", express.static(path.join(__dirname, "/../uploads")));
+app.use(express.static(path.join(__dirname, "/../frontend")))
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, '/../frontend/index.html'))
 });
 
 app.use((err, req, res, next) => {

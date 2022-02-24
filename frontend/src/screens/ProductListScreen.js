@@ -22,7 +22,7 @@ const ProductListScreen = {
         deleteButton.addEventListener("click", async () => {
           if (confirm("Are you sure to delete this product?")) {
             showLoading();
-            const data = await deletedProduct();
+            const data = await deleteProduct(deleteButton.id);
             if (data.error) {
               showMessage(data.error);
             } else {

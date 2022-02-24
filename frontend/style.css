@@ -442,3 +442,13 @@ td {
 .tr-action {
   width: 10rem;
 }
+
+
+@media only screen and (max-width: 940px) {
+  .dashboard-menu {
+    height: fit-content;
+  }
+  .dashboard {
+    height: auto;
+  }
+}
