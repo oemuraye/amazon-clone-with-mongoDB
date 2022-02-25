@@ -3,15 +3,18 @@ import { apiUrl } from "./config";
 import { getUserInfo } from "./localStorage";
 
 
-export const getProducts = async () => {
+export const getProducts = async ({ searchKeyword = '' }) => {
   try {
+    let queryString = "?";
+    if (searchKeyword) queryString += `searchKeyword=${searchKeyword}&`;
+
     const response = await axios({
-      url: `${apiUrl}/api/products`, 
+      url: `${apiUrl}/api/products${queryString}`,
       method: "GET",
       headers: {
-        "content-Type": "application/json",
-      }
-    })
+        "Content-Type": "application/json",
+      },
+    });
     if (response.statusText !== "OK") {
       throw new Error(response.data.message);
     }

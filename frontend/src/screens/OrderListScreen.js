@@ -9,7 +9,7 @@ const OrderListScreen = {
                 <div class="dashboard-content">
                     <h1>Orders</h1>
                     <div>
-                        Info and Charts will be added here
+                        Info and Charts will be displayed here...
                     </div>
                 </div>
             </div>

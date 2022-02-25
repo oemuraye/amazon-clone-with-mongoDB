@@ -15,6 +15,7 @@ import DashboardScreen from "./screens/DashboardScreen.js";
 import ProductListScreen from "./screens/ProductListScreen.js";
 import OrderListScreen from "./screens/OrderListScreen.js";
 import ProductEditScreen from "./screens/ProductEditScreen.js";
+import Aside from "./components/Aside.js";
 
 
 const routes = {
@@ -49,6 +50,10 @@ const router = async () => {
     const header = document.getElementById('header-container')
     header.innerHTML = await Header.render();
     await Header.after_render();
+
+    const aside = document.getElementById('aside-container')
+    aside.innerHTML = await Aside.render()
+    await Aside.after_render()
 
     const main = document.getElementById("main-container")
     main.innerHTML = await screen.render()
