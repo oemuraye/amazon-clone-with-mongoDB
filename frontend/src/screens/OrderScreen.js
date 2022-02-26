@@ -6,7 +6,8 @@ import {
   rerender,
   payWithPaystack,
 } from "../utils";
-import { getOrder, getPaypalClientId, getPayStackID, payOrder } from "../api";
+import { deliverOrder, getOrder, getPaypalClientId, getPayStackID, payOrder } from "../api";
+import { getUserInfo } from "../localStorage";
 
 
 const paymentPortal = () => {
@@ -31,9 +32,19 @@ const OrderScreen = {
     const {isPaid} = await getOrder(request.id);
     if (!isPaid) {
       makePayment()
+    };
+    if (document.getElementById("deliver-order-button")) {
+      document.addEventListener("click", async () => {
+        showLoading();
+        await deliverOrder(request.id);
+        hideLoading();
+        // showMessage("Order Delivered.");
+        rerender(OrderScreen);
+      });
     }
   },
   render: async () => {
+    const { isAdmin } = getUserInfo();
     const request = parseRequestUrl();
     const {
       _id,
@@ -137,6 +148,13 @@ const OrderScreen = {
                                         : `<button class="primary fw" id="pay-button">Pay With Paystack</button>`
                                     }
                                 </li> 
+                                <li>
+                                  ${
+                                    isPaid && !isDelivered && isAdmin
+                                      ? `<button id="deliver-order-button" class="primary fw">Deliver Order</button>`
+                                      : ""
+                                  }
+                                <li>
                             </ul>
                     </div>
                 </div>

@@ -47,12 +47,12 @@ const ProductListScreen = {
                         <table>
                             <thead>
                                 <tr>
-                                <th>ID</th>
-                                <th>NAME</th>
-                                <th>PRICE</th>
-                                <th>CATEGORY</th>
-                                <th>BRAND</th>
-                                <th class="tr-action">ACTION</th>
+                                  <th>ID</th>
+                                  <th>NAME</th>
+                                  <th>PRICE</th>
+                                  <th>CATEGORY</th>
+                                  <th>BRAND</th>
+                                  <th class="tr-action">ACTION</th>
                                 <tr>
                             </thead>
                             <tbody>
