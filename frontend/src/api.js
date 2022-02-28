@@ -3,19 +3,37 @@ import { apiUrl } from "./config";
 import { getUserInfo } from "./localStorage";
 
 
-export const getProducts = async ({ searchKeyword = '' }) => {
+export const getAllProducts = async () => {
   try {
-    let queryString = '?';
+    const response = await axios({
+      url: `${apiUrl}/api/products`,
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.statusText !== "OK") {
+      throw new Error(response.data.message);
+    }
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    return { error: err.response.data.message || err.message };
+  }
+};
+export const getProducts = async ({ searchKeyword = "" }) => {
+  try {
+    let queryString = "?";
     if (searchKeyword) queryString += `searchKeyword=${searchKeyword}&`;
 
     const response = await axios({
       url: `${apiUrl}/api/products${queryString}`,
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
-    if (response.statusText !== 'OK') {
+    if (response.statusText !== "OK") {
       throw new Error(response.data.message);
     }
     return response.data;
@@ -387,3 +405,23 @@ export const deliverOrder = async (orderId) => {
     return { error: err.response ? err.response.data.message : err.message };
   }
 };
+
+export const getSummary = async () => {
+  try {
+    const { token } = getUserInfo();
+    const response = await axios({
+      url: `${apiUrl}/api/orders/summary`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "content-type": "application/json",
+      },
+    });
+    if (response.statusText !== "OK") {
+      throw new Error(response.data.message);
+    } else {
+      return response.data;
+    }
+  } catch (err) {
+    return { error: err.response ? err.response.data.message : err.message };
+  }
+}

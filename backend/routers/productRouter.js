@@ -20,9 +20,8 @@ productRouter.get('/', expressAsyncHandler( async (req, res) => {
   if (products.length === 0) {
     res.status(400).send({ message: "Product Not Found" });
   } else if (products) {
-    res.send(products);
+    res.send(products)
   } else {
-
     res.status(500).send({ message: "Error in getting product" });
   }
 }))

@@ -65,6 +65,11 @@ const OrderScreen = {
     }
     return `
             <div>
+            ${
+              isAdmin
+                ? `<div class="content"><a href="/#/OrderList">Back to orders</a></div>`
+                : ''
+            }
             <h1>Order ${_id}</h1>
                 <div class="order">
                     <div class="order-info">

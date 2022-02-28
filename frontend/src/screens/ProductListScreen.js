@@ -1,4 +1,4 @@
-import { createProduct, getProducts, deleteProduct } from "../api";
+import { createProduct, getProducts, deleteProduct, getAllProducts } from "../api";
 import { showLoading, hideLoading, rerender, showMessage } from "../utils";
 
 import DashboardMenu from "../components/DashboardMenu";
@@ -34,7 +34,7 @@ const ProductListScreen = {
       });
   },
   render: async () => {
-      const products = await getProducts()
+      const products = await getAllProducts()
     return `
             <div class="dashboard">
                 ${DashboardMenu.render({ selected: "products" })}
