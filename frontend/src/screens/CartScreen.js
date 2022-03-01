@@ -43,6 +43,7 @@ const CartScreen = {
     Array.from(deletButtons).forEach((deletButton) => {
       deletButton.addEventListener('click', () => {
         removeFromCart(deletButton.id)
+        window.location.reload()
       })
     })
 
@@ -117,7 +118,7 @@ const CartScreen = {
                                     </div>
                                 </div>
                                 <div class="cart-price">
-                                    $${item.price}
+                                    ₦${item.price}
                                 </div>
                             </li>
                         `
@@ -130,7 +131,7 @@ const CartScreen = {
               <h3>
                 Subtotal (${cartItems.reduce((a, c) => a + c.qty, 0)} items)
                 :
-                $${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+                ₦${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
               </h3>
               <button id="checkout-button" class="primary fw">
                 Proceed to Checkout

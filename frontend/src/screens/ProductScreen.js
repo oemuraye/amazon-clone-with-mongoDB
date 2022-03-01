@@ -8,6 +8,7 @@ const ProductScreen = {
         const request = parseRequestUrl()
         document.getElementById('add-button').addEventListener('click', () => {
             document.location.hash = `/cart/${request.id}`
+            window.location.reload()
         })
 
         if (document.getElementById('review-form')) {
@@ -59,7 +60,7 @@ const ProductScreen = {
                             })}
                             </li>
                             <li>
-                                Price: <strong>$${product.price}</strong>
+                                Price: <strong>₦${product.price}</strong>
                             </li>
                             <li>
                                 Description:
@@ -72,7 +73,7 @@ const ProductScreen = {
                     <div class="details-action">
                         <ul>
                             <li>
-                                Price: $${product.price}
+                                Price: ₦${product.price}
                             </li>
                             <li>
                                 Status : ${
@@ -97,8 +98,10 @@ const ProductScreen = {
                     : ""
                 }
                 <ul class="review">
-                    ${product.reviews.map((review) => 
-                        `<li>
+                    ${product.reviews
+                      .map(
+                        (review) =>
+                          `<li>
                             <div><b>${review.name}</b></div>
                             <div class="rating-container">
                                 ${Rating.render({

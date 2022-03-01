@@ -12,23 +12,39 @@ const DashboardScreen = {
             series: [summary.dailyOrders.map((x) => x.sales)],
           },
           {
+            type: Chartist.AutoScaleAxis,
             showArea: true,
+            height: 300 + 20,
           }
         );
-        new Chartist.Pie(
+        const pieChart = new Chartist.Pie(
           ".ct-chart-pie",
           {
             labels: summary.productCategories.map((x) => x._id),
             series: summary.productCategories.map((x) => x.count),
           },
           {
+            // width: 300 + 20,
+            height: 300 + 20,
             donut: true,
-            donutWidth: 60,
+            donutWidth: 100,
+            donutSolid: true,
             startAngle: 270,
             showLabel: true,
-            donutSolid: true,
           }
         );
+        // pieChart.on("draw", function (context) {
+        //   if (context.type === "pie") {
+        //     context.element.attr({
+        //       style:
+        //         "stroke: hsl(" +
+        //         Math.floor(
+        //           (Chartist.getMultiValue(context.value) / max) * 100
+        //         ) +
+        //         ", 50%, 50%);",
+        //     });
+        //   }
+        // });
     },
     render: async () => {
         const summary = await getSummary()

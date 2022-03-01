@@ -29,22 +29,13 @@ const PaymentScreen = {
                             <div>
                                 <input type="radio"
                                 name="payment-method"
-                                id="paypal"
-                                value="Paypal"
+                                id="payStack"
+                                value="PayStack"
                                 checked />
-                                <label for="paypal" >PayPal</label>
+                                <label for="payStack">PayStack</label>
                             </div> 
                         </li>
-                        <li>
-                            <div>
-                                <input type="radio"
-                                name="payment-method"
-                                id="stripe"
-                                value="Stripe"
-                                />
-                                <label for="stripe" >Stripe</label>
-                            </div> 
-                        </li>
+                        
                         <li>
                             <button type="submit" class="primary">
                             Continue

@@ -80,6 +80,7 @@ button.primary {
   color: #c04040
 }
 .product-error {
+  margin-top: 50px;
   padding: 20px;
   font-size: 2rem;
 }
@@ -101,6 +102,12 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
+    height: fit-content;
+    z-index: 2;
+    /* flex-wrap: wrap; */
+}
+header .search-mobile {
+  display: none;
 }
 header a {
   color: #ffffff;
@@ -114,6 +121,18 @@ header a:hover {
   font-weight: bold;
   font-size: 3rem;
   padding-left: 1rem;
+}
+
+.badge {
+  background-color: #ffbf00e0;
+  padding: 2px 4px;
+  border-radius: 100%;
+  color: #f2f2f2;
+  margin-left: -7px;
+  position: relative;
+  top: -5px;
+  font-size: 16px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* search */
@@ -406,7 +425,7 @@ footer {
   border: none;
   /* display: none; */
 }
-isPaid {
+.isPaid {
   display: none;
 }
 
@@ -516,16 +535,52 @@ td {
 }
 .charts {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 .charts > div {
-  flex: 1;
+  width: auto;
+  /* flex: 1 1; */
 }
 .ct-chart-line .ct-line {
-  stroke: #ffc000;
+  stroke: #4dff00;
+  stroke-width: 2px;
+}
+.ct-chart-line .ct-series .ct-point {
+  stroke: rgba(232, 11, 11, 0.838);
+  stroke-width: 5px;
+  stroke-linecap: round;
+}
+.ct-chart-line {
+  fill: none;
+  stroke: #7471713e;
 }
 .ct-chart-pie .ct-label {
-  stroke: #ffc000;
+  /* fill: #ffc000; */
+}
+.ct-chart-pie .ct-series {
+  stroke: white;
+}
+.ct-chart-pie .ct-series-a {
+  fill: #70c270;
+}
+.ct-chart-pie .ct-series-b {
+  fill: #00c06da2;
+}
+.ct-chart-pie .ct-series-c {
+  fill: #4000c0a2;
+}
+.ct-chart-pie .ct-series-d {
+  fill: #00b3c0a2;
+}
+.ct-chart-pie .ct-series-e {
+  fill: #b3c000a2;
+}
+.ct-chart-pie .ct-series-f {
+  fill: #c0005aa2;
+}
+.ct-chart-pie .ct-series-g {
+  fill: #c0001da2;
 }
 
 
@@ -535,7 +590,7 @@ aside {
   width: 30rem;
   background-color: #ffffff;
   height: 100%;
-  z-index: 1;
+  z-index: 3;
   transform: translateX(-30.1rem);
   transition: all 0.5s;
   border-right: 0.1rem #808080 solid;
@@ -609,5 +664,30 @@ ul.categories {
   }
   .dashboard {
     height: auto;
+  }
+}
+@media only screen and (max-width: 767px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  header .brand a {
+    font-size: 25px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #aside-open-button {
+    font-size: 25px;
+  }
+  .search {
+    display: none;
+  }
+  .search-mobile {
+    display: block !important;
+    width: 100%;
+  }
+  form.search-form {
+    display: flex;
+    justify-content: center;
   }
 }

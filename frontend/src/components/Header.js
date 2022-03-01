@@ -12,12 +12,25 @@ const Header = {
     document.getElementById('aside-open-button').addEventListener('click', async () => {
       document.getElementById('aside-container').classList.add('open')
     })
+    const cartItems = getCartItems();
+    if (cartItems.length >= 1) {
+      
+      document.getElementById('shop-cart').classList.add('badge')
+    }
   },
   render: () => {
     const { name, isAdmin } = getUserInfo();
     const { value } = parseRequestUrl();
-    // const {cartItems} = getCartItems()
-    // let numOfItems = 0
+    const cartItems = getCartItems()
+    const cartNum = () => {
+      let numOfItems = ''
+      if (cartItems.length === 0) {
+        numOfItems
+      } else {
+        numOfItems = cartItems.length
+      }
+      return numOfItems
+    }
 
     return `
             <div class="brand">
@@ -35,11 +48,17 @@ const Header = {
             <div>
                 ${
                   name
-                    ? `<a href="/#/profile">${name}</a>`
-                    : `<a href="http:/#/signin">Sign-In</a>`
+                    ? `<a href="/#/profile">${name.substring(0, 5)}.</a>`
+                    : `<a href="http:/#/signin">Sign-In <Span class="fa fa-user"></Span> </a>`
                 }
-                <a href="http:/#/cart">Cart</a>
+                <a href="http:/#/cart">Cart <span class="fa fa-cart-plus"><i id="shop-cart" class="">${cartNum()}</i> </span> </a>
                 ${isAdmin ? `<a href="/#/dashboard">Dashboard</a>` : ""}
+            </div>
+            <div class="search-mobile search ">
+              <form class="search-form"  id="search-form">
+                <input type="text" name="q" id="q" value="${value || ""}" /> 
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>        
             </div>
         `;
   },

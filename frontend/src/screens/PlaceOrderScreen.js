@@ -102,7 +102,7 @@ const PlaceOrderScreen = {
                                                 </div>
                                                 <div> Qty: ${item.qty} </div>
                                             </div>
-                                            <div class="cart-price"> $${item.price}</div>
+                                            <div class="cart-price"> ₦${item.price}</div>
                                         </li>
                                     `
                                 )}
@@ -116,16 +116,16 @@ const PlaceOrderScreen = {
                                     <h2>Order Summary</h2>
                                 </li>
                                 <li>
-                                    <div>Items</div><div>$${itemsPrice}</div>
+                                    <div>Items</div><div>₦${itemsPrice}</div>
                                 </li>
                                 <li>
-                                    <div>Shipping</div><div>$${shippingPrice}</div>
+                                    <div>Shipping</div><div>₦${shippingPrice}</div>
                                 </li>
                                 <li>
-                                    <div>Tax</div><div>$${taxPrice}</div>
+                                    <div>Tax</div><div>₦${taxPrice}</div>
                                 </li>
                                 <li class="total">
-                                    <div>Order Total</div><div>$${totalPrice}</div>
+                                    <div>Order Total</div><div>₦${totalPrice}</div>
                                 </li> 
                                 <li>
                                     <button id="placeorder-button" class="primary fw">
