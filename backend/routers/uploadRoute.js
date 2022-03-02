@@ -1,6 +1,6 @@
 import express from "express"
 import multer from "multer"
-import { isAuth, isAdmin } from "../utils";
+import { isAuth, isAdmin } from "../utils.js";
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {

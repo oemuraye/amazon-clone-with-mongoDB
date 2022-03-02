@@ -1,12 +1,29 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 
-import Product from '../models/productModel'
-import { isAdmin, isAuth } from '../utils'
-import data from "../data";
+import Product from '../models/productModel.js'
+import { isAdmin, isAuth } from '../utils.js'
+import data from "../data.js";
 
 const productRouter = express.Router();
 
+productRouter.post('/', isAuth, isAdmin, expressAsyncHandler( async (req, res) => {
+  const product = new Product({
+      name: "sample product",
+      description: "sample desc",
+      category: "sample category",
+      brand: "sample brand",
+      image: "/images/product-1.jpg",
+    });
+    const createdProduct = await product.save();
+    if (createdProduct) {
+      res
+        .status(201)
+        .send({ message: "Product Created", product: createdProduct });
+    } else {
+      res.status(500).send({ message: "Error in creating product" });
+    }
+}))
 productRouter.get('/', expressAsyncHandler( async (req, res) => {
   const searchKeyword = req.query.searchKeyword
     ? {
@@ -27,28 +44,11 @@ productRouter.get('/', expressAsyncHandler( async (req, res) => {
 }))
 
 productRouter.get("/:id", expressAsyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id)
     res.send(product)
   })
 )
 
-productRouter.post('/', isAuth, isAdmin, expressAsyncHandler( async (req, res) => {
-  const product = new Product({
-      name: "sample product",
-      description: "sample desc",
-      category: "sample category",
-      brand: "sample brand",
-      image: "/images/product-1.jpg",
-    });
-    const createdProduct = await product.save();
-    if (createdProduct) {
-      res
-        .status(201)
-        .send({ message: "Product Created", product: createdProduct });
-    } else {
-      res.status(500).send({ message: "Error in creating product" });
-    }
-}))
 
 productRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler( async (req, res) => {
   const product = await Product.findById(req.params.id)

@@ -1,16 +1,18 @@
 import express from "express";
 import cors from "cors";
-import data from "./data"
 
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import path from 'path'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 
-import userRouter from "./routers/userRouter";
-import productRouter from "./routers/productRouter";
-import orderRouter from "./routers/orderRouter"
-import uploadRouter from './routers/uploadRoute'
-import config from "./config";
+
+import userRouter from "./routers/userRouter.js";
+import productRouter from "./routers/productRouter.js";
+import orderRouter from "./routers/orderRouter.js"
+import uploadRouter from './routers/uploadRoute.js'
+import config from "./config.js";
 
 mongoose.connect(config.MONGODB_URL, {
     useNewUrlParser: true,
@@ -55,6 +57,9 @@ app.use("/api/uploads", uploadRouter)
 app.get("/api/paystack/clientId", (req, res) => {
   res.send({ clientId: config.PAYSTACK_SECRET})
 })
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 app.use("/uploads", express.static(path.join(__dirname, "/../uploads")));
 app.use(express.static(path.join(__dirname, "/../frontend")))

@@ -1,8 +1,9 @@
 {
-  "name": "amazon-clone-with-mongodb",
+  "name": "e-commerce-clone-with-mongodb",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "accepts": "^1.3.7",
     "array-flatten": "^1.1.1",
@@ -62,28 +63,33 @@
     "vary": "^1.1.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.7",
-    "@babel/core": "^7.16.7",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
     "@babel/node": "^7.16.7",
-    "@babel/preset-env": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "node backend/server.js",
     "dev": "nodemon --watch backend --exec babel-node backend/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel backend -d server.js ",
+    "start": "node backend/server.js",
+    "serve": "node dist/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oemuraye/amazon-clone-with-mongoDB.git"
+    "url": "git+https://github.com/oemuraye/e-commerce-clone-with-mongoDB.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/oemuraye/amazon-clone-with-mongoDB/issues"
+    "url": "https://github.com/oemuraye/e-commerce-clone-with-mongoDB/issues"
   },
-  "homepage": "https://github.com/oemuraye/amazon-clone-with-mongoDB#readme"
+  "engines": {
+    "node": "16.4.2",
+    "npm": "8.4.0"
+  },
+  "homepage": "https://github.com/oemuraye/e-commerce-clone-with-mongoDB#readme"
 }
