@@ -23,7 +23,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: "[name].main.js",
+    filename: "./src/index.js",
     publicPath: path.resolve(__dirname, "/"),
     clean: true,
   },
