@@ -32,6 +32,7 @@ export default {
   output: {
     filename: "index.js",
     publicPath: path.resolve(__dirname, "/"),
+    path: path.resolve(__dirname, "dist"),
     clean: true,
   },
-}
+};
