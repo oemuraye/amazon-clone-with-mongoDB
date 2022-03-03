@@ -1,5 +1,5 @@
-import { getProduct, updateProduct, uploadProductImage } from '../api';
-import { hideLoading, parseRequestUrl, showLoading, showMessage } from "../utils";
+import { getProduct, updateProduct, uploadProductImage } from '../api.js';
+import { hideLoading, parseRequestUrl, showLoading, showMessage } from "../utils.js";
 
 const ProductEditScreen = {
   after_render: () => {

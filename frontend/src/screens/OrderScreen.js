@@ -1,13 +1,12 @@
 import {
   showLoading,
   hideLoading,
-  showMessage,
   parseRequestUrl,
   rerender,
   payWithPaystack,
-} from "../utils";
-import { deliverOrder, getOrder, getPaypalClientId, getPayStackID, payOrder } from "../api";
-import { getUserInfo } from "../localStorage";
+} from "../utils.js";
+import { deliverOrder, getOrder } from "../api.js";
+import { getUserInfo } from "../localStorage.js";
 
 
 const paymentPortal = () => {

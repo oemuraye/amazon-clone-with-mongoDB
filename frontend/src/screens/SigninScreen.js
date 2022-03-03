@@ -1,6 +1,6 @@
-import { signin } from "../api";
-import { getUserInfo, setUserInfo } from "../localStorage";
-import { hideLoading, redirectUser, showLoading, showMessage } from "../utils";
+import { signin } from "../api.js";
+import { getUserInfo, setUserInfo } from "../localStorage.js";
+import { hideLoading, redirectUser, showLoading, showMessage } from "../utils.js";
 
 const SigninScreen = {
     after_render: () => {

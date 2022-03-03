@@ -1,7 +1,7 @@
-import { cleanCart, getCartItems, getPayment, getShipping } from "../localStorage";
-import CheckoutSteps from "../components/CheckoutSteps";
-import { showLoading, hideLoading, showMessage } from '../utils';
-import { createOrder } from "../api";
+import { cleanCart, getCartItems, getPayment, getShipping } from "../localStorage.js";
+import CheckoutSteps from "../components/CheckoutSteps.js";
+import { showLoading, hideLoading, showMessage } from '../utils.js';
+import { createOrder } from "../api.js";
 ;
 
 

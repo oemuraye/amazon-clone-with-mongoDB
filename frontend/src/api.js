@@ -1,6 +1,6 @@
 import axios from "axios";
-import { apiUrl } from "./config";
-import { getUserInfo } from "./localStorage";
+import { apiUrl } from "./config.js";
+import { getUserInfo } from "./localStorage.js";
 
 
 export const getAllProducts = async () => {

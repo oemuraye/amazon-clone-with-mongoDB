@@ -1,6 +1,6 @@
-import { deleteOrder, getOrders } from "../api";
-import DashboardMenu from "../components/DashboardMenu";
-import { showLoading, hideLoading, rerender, showMessage } from "../utils";
+import { deleteOrder, getOrders } from "../api.js";
+import DashboardMenu from "../components/DashboardMenu.js";
+import { showLoading, hideLoading, rerender, showMessage } from "../utils.js";
 
 const OrderListScreen = {
   after_render: async () => {

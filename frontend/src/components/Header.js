@@ -1,5 +1,5 @@
-import { getCartItems, getUserInfo } from "../localStorage"
-import {parseRequestUrl } from "../utils"
+import { getCartItems, getUserInfo } from "../localStorage.js";
+import {parseRequestUrl } from "../utils.js"
 
 const Header = {
   after_render: () => {

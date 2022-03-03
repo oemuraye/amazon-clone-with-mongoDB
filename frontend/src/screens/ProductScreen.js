@@ -1,7 +1,7 @@
-import { createReview, getProduct } from "../api"
-import { hideLoading, parseRequestUrl, rerender, showLoading, showMessage } from "../utils";
-import Rating from '../components/Rating'
-import { getUserInfo } from "../localStorage";
+import { createReview, getProduct } from "../api.js"
+import { hideLoading, parseRequestUrl, rerender, showLoading, showMessage } from "../utils.js";
+import Rating from '../components/Rating.js'
+import { getUserInfo } from "../localStorage.js";
 
 const ProductScreen = {
     after_render: () => {

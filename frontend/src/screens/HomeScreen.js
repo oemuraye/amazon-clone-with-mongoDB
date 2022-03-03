@@ -1,6 +1,6 @@
-import Rating from "../components/Rating";
-import { getProducts } from "../api";
-import { parseRequestUrl } from "../utils";
+import Rating from "../components/Rating.js";
+import { getProducts } from "../api.js";
+import { parseRequestUrl } from "../utils.js";
 
 const HomeScreen = {
   render: async () => {

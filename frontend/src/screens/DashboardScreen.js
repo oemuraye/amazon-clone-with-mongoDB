@@ -1,6 +1,6 @@
 // import Chartist from 'chartist'
-import { getSummary } from "../api"
-import DashboardMenu from "../components/DashboardMenu"
+import { getSummary } from "../api.js"
+import DashboardMenu from "../components/DashboardMenu.js"
 
 const DashboardScreen = {
     after_render: async () => {

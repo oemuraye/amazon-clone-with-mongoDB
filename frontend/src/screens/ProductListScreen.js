@@ -1,7 +1,7 @@
-import { createProduct, getProducts, deleteProduct, getAllProducts } from "../api";
-import { showLoading, hideLoading, rerender, showMessage } from "../utils";
+import { createProduct, getProducts, deleteProduct, getAllProducts } from "../api.js";
+import { showLoading, hideLoading, rerender, showMessage } from "../utils.js";
 
-import DashboardMenu from "../components/DashboardMenu";
+import DashboardMenu from "../components/DashboardMenu.js";
 
 const ProductListScreen = {
   after_render: () => {

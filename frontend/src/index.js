@@ -1,5 +1,5 @@
 import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
-import Header from './components/Header';
+import Header from './components/Header.js';
 import CartScreen from "./screens/CartScreen.js";
 import Error404Screen from "./screens/Error404Screen.js"
 import HomeScreen from "./screens/HomeScreen.js"

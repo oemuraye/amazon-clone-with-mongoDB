@@ -1,6 +1,6 @@
-import { getOrder, getPayStackID, payOrder } from "./api"
-import { getUserInfo } from "./localStorage"
-import OrderScreen from "./screens/OrderScreen"
+import { getOrder, getPayStackID, payOrder } from "./api.js";
+import { getUserInfo } from "./localStorage.js";
+import OrderScreen from "./screens/OrderScreen.js";
 // import PaystackPop from '@paystack/inline-js'
 
 export const parseRequestUrl = () => {
