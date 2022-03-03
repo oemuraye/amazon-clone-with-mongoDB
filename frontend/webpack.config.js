@@ -23,8 +23,8 @@ module.exports = {
     }),
   ],
   output: {
-    filename: "[name].main.js",
-    path: path.resolve(__dirname, "/dist"),
+    filename: "./app.main.js",
+    path: path.resolve(__dirname, "dist"),
     clean: true,
   },
 };
