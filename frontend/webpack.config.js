@@ -22,7 +22,7 @@ const __dirname = dirname(__filename);
 
 export default {
   entry: {
-    app: "./dist/src/index.js",
+    app: "./src/index.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -30,7 +30,7 @@ export default {
     }),
   ],
   output: {
-    filename: "./dist/src/index.js",
+    filename: "index.js",
     publicPath: path.resolve(__dirname, "/"),
     clean: true,
   },
