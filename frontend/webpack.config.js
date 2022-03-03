@@ -27,4 +27,4 @@ module.exports = {
     publicPath: path.resolve(__dirname, "/"),
     clean: true,
   },
-};
+}
