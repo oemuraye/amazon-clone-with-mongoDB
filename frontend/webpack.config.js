@@ -1,7 +1,6 @@
 import path from 'path'
 
 // module.exports = {
-  
 //   devServer: {
 //     static: {
 //       directory: path.join(__dirname, ""),
