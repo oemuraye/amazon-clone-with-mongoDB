@@ -64,7 +64,7 @@ const __dirname = dirname(__filename)
 app.use("/uploads", express.static(path.join(__dirname, "/../uploads")));
 app.use(express.static(path.join(__dirname, "/../frontend")))
 app.get("*", (req, res) => {
-  if (req.path.endsWith("bundle.js")) {
+  if (req.path.endsWith("app.main.js")) {
     res.sendFile(path.resolve(__dirname, "app.main.js"));
   } else {
     res.sendFile(path.resolve(__dirname, '/../frontend/index.html'))
