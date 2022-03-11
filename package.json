@@ -77,7 +77,7 @@
     "start": "node backend/server.js",
     "serve": "node dist/server.js",
     "heroku-prebuild": "cd frontend && npm install --dev",
-    "build": "rm -rf dist && cd frontend && npm install && npm run build"
+    "build": "cd frontend && npm install && npm run build"
   },
   "repository": {
     "type": "git",
