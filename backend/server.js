@@ -72,6 +72,6 @@ app.use((err, req, res, next) => {
   res.status(status).send({ message: err.message })
 })
 
-app.listen(config.PORT, () => {
-  console.log(`Serving at ${config.PORT}`)
+app.listen(config.PORT || 5000, () => {
+  console.log(`Serving at ${config.PORT || 5000}`)
 });
