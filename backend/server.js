@@ -13,8 +13,11 @@ import productRouter from "./routers/productRouter.js";
 import orderRouter from "./routers/orderRouter.js"
 import uploadRouter from './routers/uploadRoute.js'
 import config from "./config.js";
+import dotenv from "dotenv";
 
-mongoose.connect(config.MONGODB_URL, {
+dotenv.config();
+
+mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useCreateIndex: true
@@ -48,14 +51,14 @@ app.use("/api/products", productRouter);
 
 app.use("/api/orders", orderRouter);
 
-app.use("/api/uploads", uploadRouter)
+app.use("/api/uploads", uploadRouter);
 
 // app.get("/api/paypal/clientId", (req, res) => {
 //   res.send({ clientId: config.PAYPAL_CLIENT_ID })
 // });
 
 app.get("/api/paystack/clientId", (req, res) => {
-  res.send({ clientId: config.PAYSTACK_SECRET})
+  res.send({ clientId: process.env.PAYSTACK_SECRET})
 })
 
 const __filename = fileURLToPath(import.meta.url)
@@ -63,8 +66,9 @@ const __dirname = dirname(__filename)
 
 app.use("/uploads", express.static(path.join(__dirname, "/../uploads")));
 app.use(express.static(path.join(__dirname, "/../frontend")))
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, '/../frontend/index.html'))
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname, '/../frontend/index.html')
 });
 
 app.use((err, req, res, next) => {
@@ -72,6 +76,6 @@ app.use((err, req, res, next) => {
   res.status(status).send({ message: err.message })
 })
 
-app.listen(config.PORT || 5000, () => {
-  console.log(`Serving at ${config.PORT || 5000}`)
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`Serving at ${process.env.PORT || 5000}`)
 });
