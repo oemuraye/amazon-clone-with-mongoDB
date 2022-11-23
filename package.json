@@ -89,7 +89,7 @@
     "url": "https://github.com/oemuraye/e-commerce-clone-with-mongoDB/issues"
   },
   "engines": {
-    "node": "16.4.2",
+    "node": "19.0.0",
     "npm": "8.4.0"
   },
   "homepage": "https://github.com/oemuraye/e-commerce-clone-with-mongoDB#readme"
