@@ -76,7 +76,7 @@
   },
   "scripts": {
     "dev": "nodemon --watch backend --exec babel-node backend/server.js",
-    "start": "node server.js",
+    "start": "node backend/server.js",
     "serve": "node dist/server.js"
   },
   "repository": {
