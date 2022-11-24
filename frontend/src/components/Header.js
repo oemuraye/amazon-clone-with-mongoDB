@@ -49,9 +49,9 @@ const Header = {
                 ${
                   name
                     ? `<a href="/#/profile">${name.substring(0, 5)}.</a>`
-                    : `<a href="http:/#/signin">Sign-In <Span class="fa fa-user"></Span> </a>`
+                    : `<a href="/#/signin">Sign-In <Span class="fa fa-user"></Span> </a>`
                 }
-                <a href="http:/#/cart">Cart <span class="fa fa-cart-plus"><i id="shop-cart" class="">${cartNum()}</i> </span> </a>
+                <a href="/#/cart">Cart <span class="fa fa-cart-plus"><i id="shop-cart" class="">${cartNum()}</i> </span> </a>
                 ${isAdmin ? `<a href="/#/dashboard">Dashboard</a>` : ""}
             </div>
             <div class="search-mobile search ">
