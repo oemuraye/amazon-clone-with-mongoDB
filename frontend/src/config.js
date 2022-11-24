@@ -2,6 +2,6 @@
 
 // export const apiUrl = 'https://pius-ecommerce.onrender.com'
 
-// export const apiUrl = 'http://localhost:5000'
+export const apiUrl = 'http://localhost:5000'
 
-export const apiUrl = '/'
+// export const apiUrl = '/'
